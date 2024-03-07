@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Recipes List</title>
+    </head>
+    <body>
+        <h1>Recipe Book</h1>
+        <h2>Recipes: </h2>
+        <ul>
+            {% for recipe in recipe_container %}
+            <li>
+                <b>
+                    {{recipe.name}}
+                </b>
+                <ul>
+                    {% for recipe_ingredient in recipe.recipes.all %}
+                    <li>
+                        {{recipe_ingredient.ingredient}} --- {{recipe_ingredient.quantity}}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'ledger:recipe_detail' recipe.pk %}">View Recipe</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
+
